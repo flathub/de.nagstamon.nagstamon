@@ -206,3 +206,20 @@ modules:
       - type: file
         url: https://files.pythonhosted.org/packages/13/3b/42c51612c9d46de37bdae19f2290848e17ee4fa38a63f37f1d46b7660510/requests_kerberos-0.14.0-py2.py3-none-any.whl
         sha256: da74ea478ccd8584de88092bdcd17a7c29d494374a340d1d8677189903c9ac6a
+
+  - name: python3-arrow
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "arrow" --no-build-isolation
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/f8/ed/e97229a566617f2ae958a6b13e7cc0f585470eac730a73e9e82c32a3cdd2/arrow-1.3.0-py3-none-any.whl
+        sha256: c728b120ebc00eb84e01882a6f5e7927a53960aa990ce7dd2b10f39005a67f80
+      - type: file
+        url: https://files.pythonhosted.org/packages/ec/57/56b9bcc3c9c6a792fcbaf139543cee77261f3651ca9da0c93f5c1221264b/python_dateutil-2.9.0.post0-py2.py3-none-any.whl
+        sha256: a8b2bc7bffae282281c8140a97d3aa9c14da0b136dfe83f850eea9a5f7470427
+      - type: file
+        url: https://files.pythonhosted.org/packages/35/d6/ba5f61958f358028f2e2ba1b8e225b8e263053bd57d3a79e2d2db64c807b/types_python_dateutil-2.9.0.20241003-py3-none-any.whl
+        sha256: 250e1d8e80e7bbc3a6c99b907762711d1a1cdd00e978ad39cb5940f6f0a87f3d
+
