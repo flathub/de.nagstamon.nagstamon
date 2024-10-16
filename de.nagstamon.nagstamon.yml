@@ -22,6 +22,7 @@ finish-args:
   - --persist=.nagstamon
   - --talk-name=org.freedesktop.Notifications
   - --talk-name=org.freedesktop.secrets
+  - --talk-name=org.kde.StatusNotifierWatcher
   - --env=QTWEBENGINEPROCESS_PATH=/app/bin/QtWebEngineProcess
   - --filesystem=xdg-run/keyring
   - --filesystem=home
@@ -89,14 +90,10 @@ modules:
       - install -Dm644 nagstamon.appdata.xml -t /app/share/metainfo
     sources:
       - type: archive
-        url: https://github.com/HenriWahl/Nagstamon/archive/refs/tags/v3.14.0.tar.gz
-        sha256: f51c50feb7efa328d252c638b6602405d550a99622dd7e8f07341814879e9f30
+        url: https://github.com/HenriWahl/Nagstamon/archive/refs/tags/v3.16.0.tar.gz
+        sha256: cea6b6ff59a487a0afed382e42236af401a54daee61f196905f802069a0a5396
       - type: file
-        #url: https://raw.githubusercontent.com/HenriWahl/Nagstamon/master/Nagstamon/resources/nagstamon.appdata.xml
-        url: https://raw.githubusercontent.com/HenriWahl/Nagstamon/5d994ea42ad86bbbdc61669b8a45fecaa0183f14/Nagstamon/resources/nagstamon.appdata.xml
-        sha256: c9db793fa04bf20e28fb38535751e49640bd95d7d940bf2993bbd19c1ee0691a
+        url: https://raw.githubusercontent.com/HenriWahl/Nagstamon/master/Nagstamon/resources/nagstamon.appdata.xml
+        sha256: fa98e215a4c965cd192dda718c18d9a69ff50cc13254041c4d523d61354b6646
       - type: file
         path: nagstamon.sh
-      - type: patch
-        path: nagstamon_svg_size.patch
-
