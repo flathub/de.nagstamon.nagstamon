@@ -37,4 +37,4 @@ flatpak uninstall --user de.nagstamon.nagstamon
 ⚠️ **Important:** no PyQt in `requirements.txt`, because PyQt is provided by the runtime!
 
 ```bash
-./flatpak-pip-generator --runtime org.kde.Sdk//6.10 --requirements requirements.txt      
+./flatpak-pip-generator --runtime org.kde.Sdk//6.10 --requirements requirements.txt
