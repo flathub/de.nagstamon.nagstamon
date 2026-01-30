@@ -1,11 +1,11 @@
 app-id: de.nagstamon.nagstamon
 runtime: org.kde.Platform
-runtime-version: '6.7'
+runtime-version: '6.10'
 sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.rust-stable
 base: com.riverbankcomputing.PyQt.BaseApp
-base-version: '6.7'
+base-version: '6.10'
 command: nagstamon
 rename-appdata-file: nagstamon.appdata.xml
 rename-desktop-file: nagstamon.desktop
@@ -29,30 +29,6 @@ finish-args:
 cleanup-commands:
   - /app/cleanup-BaseApp.sh
 modules:
-  # from submodule https://github.com/flathub/shared-modules.git
-  - shared-modules/libsecret/libsecret.json
-
-  - name: krb5
-    subdir: src
-    config-opts:
-      - --localstatedir=/var/lib
-      - --sbindir=${FLATPAK_DEST}/bin
-      - --disable-static
-      - --disable-rpath
-    cleanup:
-      - /bin
-      - /share/et
-      - /share/examples
-      - /share/man
-    sources:
-      - type: archive
-        url: https://github.com/krb5/krb5/archive/refs/tags/krb5-1.21.2-final.tar.gz
-        sha256: 5827fa39ead0e7f7b8a158799eb5d50b194129e81b378892caedcafe50c5c195
-      - type: shell
-        dest: src
-        commands:
-          - autoreconf -si
-
   - name: dbus-run-session
     buildsystem: autotools
     cleanup: ['*']
@@ -76,6 +52,32 @@ modules:
           project-id: 402
           url-template: https://dbus.freedesktop.org/releases/dbus-python/dbus-python-$version.tar.gz
 
+  # MIT Kerberos for gssapi Python package
+  # Note: Using 1.22 from GitHub mirror (kerberos.org is unreliable, 1.21.3 has build issues)
+  # GitHub archives don't include generated configure scripts, so we need to run autoreconf
+  - name: mit-krb5
+    buildsystem: simple
+    subdir: src
+    build-commands:
+      - autoreconf -i
+      - ./configure --prefix=/app --disable-static --without-system-verto --without-libedit
+      - make
+      - make install
+    cleanup:
+      - /share/man
+      - /share/examples
+      - /share/et
+      - '*.a'
+      - '*.la'
+    sources:
+      - type: archive
+        url: https://github.com/krb5/krb5/archive/refs/tags/krb5-1.22-final.tar.gz
+        sha256: 686f7251da4b1ffcba1112b4b25c888890dac3227f9b84151bb41fce4ffc2d78
+        x-checker-data:
+          type: anitya
+          project-id: 13287
+          url-template: https://github.com/krb5/krb5/archive/refs/tags/krb5-$version-final.tar.gz
+
   # external python modules
   - python-modules.yml
 
@@ -97,3 +99,4 @@ modules:
         sha256: fe5143576c1d201b81f7d9a4effc319ccff6b6f551e2b549607c3500caf0b48b
       - type: file
         path: nagstamon.sh
+

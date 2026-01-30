@@ -49,8 +49,8 @@ modules:
     sources:
       - &id006
         type: file
-        url: https://files.pythonhosted.org/packages/68/ce/95b0bae7968c65473e1298efb042e10cafc7bafc14d9e4f154008241c91d/cffi-1.16.0.tar.gz
-        sha256: bcb3ef43e58665bbda2fb198698fcae6776483e0c4a631aa5647806c25e02cc0
+        url: https://files.pythonhosted.org/packages/fc/97/c783634659c2920c3fc70419e3af40972dbaf758daa229a7d6ea6135c90d/cffi-1.17.1.tar.gz
+        sha256: 1c39c6016c32bc48dd54561950ebd6836e1670f2ae46128f67cf49e789c52824
         #x-checker-data:
         #  name: cffi
         #  type: pypi
@@ -62,6 +62,35 @@ modules:
         #  name: pycparser
         #  packagetype: bdist_wheel
         #  type: pypi
+
+  - name: python3-maturin
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "maturin" --no-build-isolation
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/58/e0/c8fa042daf0608cc2e9a59b6df3a9e287bfc7f229136f17727f4118bac2d/maturin-1.11.5-py3-none-manylinux_2_12_x86_64.manylinux2010_x86_64.musllinux_1_1_x86_64.whl
+        sha256: ffe7418834ff3b4a6c987187b7abb85ba033f4733e089d77d84e2de87057b4e7
+        #x-checker-data:
+        #  name: maturin
+        #  packagetype: bdist_wheel
+        #  type: pypi
+      - type: file
+        url: https://files.pythonhosted.org/packages/99/af/9d3edc8375efc8d435d5f24794bc4de234d4e743447592da970d53b31361/maturin-1.11.5-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_1_aarch64.whl
+        sha256: c739b243d012386902f112ea63a54a94848932b70ae3565fa5e121fd1c0200e0
+        #x-checker-data:
+        #  name: maturin
+        #  packagetype: bdist_wheel
+        #  type: pypi
+      - type: file
+        url: https://files.pythonhosted.org/packages/c6/66/997974b44f8d3de641281ec04fbf5b6ca821bdc8291a2fa73305978db74d/maturin-1.11.5-py3-none-manylinux_2_12_i686.manylinux2010_i686.musllinux_1_1_i686.whl
+        sha256: f1320dacddcd3aa84a4bdfc77ee6fdb60e4c3835c853d7eb79c09473628b0498
+        #x-checker-data:
+        #  name: maturin
+        #  packagetype: bdist_wheel
+        #  type: pypi
+
   - name: python3-cryptography
     buildsystem: simple
     build-options:
@@ -76,12 +105,26 @@ modules:
       - *id006
       - &id008
         type: file
-        url: https://files.pythonhosted.org/packages/13/9e/a55763a32d340d7b06d045753c186b690e7d88780cafce5f88cb931536be/cryptography-42.0.5.tar.gz
-        sha256: 6fe07eec95dfd477eb9530aef5bead34fec819b3aaf6c5bd6d20565da607bfe1
+        url: https://files.pythonhosted.org/packages/0d/05/07b55d1fa21ac18c3a8c79f764e2514e6f6a9698f1be44994f5adf0d29db/cryptography-43.0.3.tar.gz
+        sha256: 315b9001266a492a6ff443b61238f956b214dbec9910a081ba5b6646a055a805
         #x-checker-data:
         #  name: cryptography
         #  type: pypi
       - *id007
+
+  - name: python3-six
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "six" --no-build-isolation
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl
+        sha256: 4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274
+        #x-checker-data:
+        #  name: six
+        #  packagetype: bdist_wheel
+        #  type: pypi
 
   - name: python3-dateutil
     buildsystem: simple
@@ -144,8 +187,11 @@ modules:
         lxml
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/2b/b4/bbccb250adbee490553b6a52712c46c20ea1ba533a643f1424b27ffc6845/lxml-5.1.0.tar.gz
-        sha256: 3eea6ed6e6c918e468e693c41ef07f3c3acc310b70ddd9cc72d9ef84bc9564ca
+        url: https://files.pythonhosted.org/packages/aa/88/262177de60548e5a2bfc46ad28232c9e9cbde697bd94132aeb80364675cb/lxml-6.0.2.tar.gz
+        sha256: cd79f3367bd74b317dda655dc8fcfa304d9eb6e4fb06b7168c5cf27f96e0cd62
+        #x-checker-data:
+        #  name: lxml
+        #  type: pypi
 
   - name: python3-psutil
     buildsystem: simple
@@ -184,6 +230,9 @@ modules:
 
   - name: python3-requests-kerberos
     buildsystem: simple
+    build-options:
+      env:
+        PATH: /app/bin:/usr/bin:/bin:/usr/sbin:/sbin
     build-commands:
       - pip3 install --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST}  --no-build-isolation
         requests-kerberos
@@ -192,8 +241,11 @@ modules:
         url: https://files.pythonhosted.org/packages/cc/fd/06a7618de50ad13b7e85115bd1e42c1625e3365313a4c971898386781f89/pyspnego-0.10.2-py3-none-any.whl
         sha256: 3d5c5c28dbd0cd6a679acf45219630254db3c0e5ad4a16de521caa0585b088c0
       - type: file
-        url: https://files.pythonhosted.org/packages/13/e7/dd88180cfcf243be62308707cc2f5dae4c726c68f30b9367931c794fda16/gssapi-1.8.3.tar.gz
-        sha256: aa3c8d0b1526f52559552bb2c9d2d6be013d76a8e5db00b39a1db5727e93b0b0
+        url: https://files.pythonhosted.org/packages/23/52/c1e90623c259a42ab0587078bb04f959867b970add46ff66750ead8fc7c5/gssapi-1.11.1.tar.gz
+        sha256: 2049ee4b1d0c363163a1344b7282a363f9f4094e51d2c36de0cf01d4735e0ae2
+        #x-checker-data:
+        #  name: gssapi
+        #  type: pypi
       - type: file
         url: https://files.pythonhosted.org/packages/fc/84/5748f255f1689c95cf8dd0f2789480f7261ec0c82880a6a1f4daead6894d/Cython-3.0.9-py2.py3-none-any.whl
         sha256: bf96417714353c5454c2e3238fca9338599330cf51625cdc1ca698684465646f

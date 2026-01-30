@@ -31,3 +31,10 @@ flatpak run de.nagstamon.nagstamon
 ```bash
 flatpak uninstall --user de.nagstamon.nagstamon
 ```
+
+## How to update Nagstamon requirements
+
+⚠️ **Important:** no PyQt in `requiments.txt`, because PyQt is provided by the runtime!
+
+```bash
+./flatpak-pip-generator --runtime org.kde.Sdk//6.10 --requirements requirements.txt      
