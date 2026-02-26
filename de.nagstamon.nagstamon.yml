@@ -93,7 +93,7 @@ modules:
     sources:
       - type: archive
         url: https://github.com/HenriWahl/Nagstamon/archive/refs/tags/v3.18.0.tar.gz
-        sha256: 77ff63cdb44d5cf0f8bc08198a131d4db8a61bdd2e74459c7c6006b2f9ee61c9
+        sha256: 0a4973206e40e7d0c611c6fcd90fc2378e38064e2804c3520ded335b7aaba6d7
       - type: file
         url: https://raw.githubusercontent.com/HenriWahl/Nagstamon/v3.18.0/Nagstamon/resources/nagstamon.appdata.xml
         sha256: 36913409084a037e523bfd34e687bf1378de7aaef8cc409b4f8be1eb67ff9307
