@@ -10,9 +10,6 @@ command: nagstamon
 rename-appdata-file: nagstamon.appdata.xml
 rename-desktop-file: nagstamon.desktop
 rename-icon: nagstamon
-build-options:
-  env:
-    - BASEAPP_REMOVE_WEBENGINE=1
 finish-args:
   - --share=ipc
   - --socket=x11
