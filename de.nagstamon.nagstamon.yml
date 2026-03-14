@@ -89,11 +89,11 @@ modules:
       - install -Dm644 nagstamon.appdata.xml -t /app/share/metainfo
     sources:
       - type: archive
-        url: https://github.com/HenriWahl/Nagstamon/archive/refs/tags/v3.18.1.tar.gz
-        sha256: fb5f74230ce7616662135c9da2eb697d58f10aad83e634c23bd549074940d91e
+        url: https://github.com/HenriWahl/Nagstamon/archive/refs/tags/v3.18.2.tar.gz
+        sha256: d7daf3680d1ef373dfc116d564fbd7e489aa19d3c767438b23a8d018ac4dde9b
       - type: file
-        url: https://raw.githubusercontent.com/HenriWahl/Nagstamon/v3.18.1/Nagstamon/resources/nagstamon.appdata.xml
-        sha256: 01054f36137652d476082818395b4f300fe2e07ef500b2866076fdb6c4a1efc0
+        url: https://raw.githubusercontent.com/HenriWahl/Nagstamon/v3.18.2/Nagstamon/resources/nagstamon.appdata.xml
+        sha256: 15340ccbf8217f43e773f62793411114b998850b1eff6954c318255980e52899
       - type: file
         path: nagstamon.sh
 
