@@ -73,7 +73,7 @@ modules:
         x-checker-data:
           type: anitya
           project-id: 13287
-          url-template: https://github.com/krb5/krb5/archive/refs/tags/krb5-$version-final.tar.gz
+          url-template: https://github.com/krb5/krb5/archive/refs/tags/krb5-$version.tar.gz
 
   # external python modules
   - python-modules.yml
@@ -96,4 +96,3 @@ modules:
         sha256: 15340ccbf8217f43e773f62793411114b998850b1eff6954c318255980e52899
       - type: file
         path: nagstamon.sh
-
