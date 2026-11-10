@@ -31,12 +31,15 @@ modules:
     cleanup: ['*']
     sources:
       - type: archive
-        url: https://gitlab.freedesktop.org/dbus/dbus/-/archive/dbus-1.14.10/dbus-dbus-1.14.10.tar.gz
-        sha256: 5fedcd6c17fbc62646af224e1aab11a334c463e7e7d89163a670ed24e7ab241c
+        url: https://dbus.freedesktop.org/releases/dbus/dbus-1.14.10.tar.xz
+        sha256: ba1f21d2bd9d339da2d4aa8780c09df32fea87998b73da24f49ab9df1e36a50f
         x-checker-data:
           type: anitya
           project-id: 5356
-          url-template: https://gitlab.freedesktop.org/dbus/dbus/-/archive/dbus-$version/dbus-dbus-$version.tar.g00z
+          # Newer release lines require migrating the module away from Autotools.
+          versions:
+            <: '1.15'
+          url-template: https://dbus.freedesktop.org/releases/dbus/dbus-$version.tar.xz
 
   - name: dbus-python
     buildsystem: autotools
@@ -96,4 +99,3 @@ modules:
         sha256: 15340ccbf8217f43e773f62793411114b998850b1eff6954c318255980e52899
       - type: file
         path: nagstamon.sh
-
