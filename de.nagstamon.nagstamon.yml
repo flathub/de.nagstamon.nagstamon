@@ -71,8 +71,8 @@ modules:
       - '*.la'
     sources:
       - type: archive
-        url: https://github.com/krb5/krb5/archive/refs/tags/krb5-1.22-final.tar.gz
-        sha256: 686f7251da4b1ffcba1112b4b25c888890dac3227f9b84151bb41fce4ffc2d78
+        url: https://github.com/krb5/krb5/archive/refs/tags/krb5-1.22.3-final.tar.gz
+        sha256: 4b1d2f8317e17a5848c62a1af460e00cdd6e8ef0fe267f6e6d1a4bc73a0e416d
         x-checker-data:
           type: anitya
           project-id: 13287
